@@ -1,0 +1,30 @@
+/* CRACIUN Alexandra-Georgiana -311CB */
+    Se citeste din stdin cate o linie, iar apoi se desparte pe comenzi. Functia
+Touch returneaza 1 daca exista deja un file cu acelasi nume in directorul
+curent, 2 daca exista directoare cu acelasi nume, sau 0 in cazul in care numele
+este unic, si executa creearea fisierului. In cazul in care nu e primul file,
+se cauta locul in arbore, se pastreaza fileul anterior pozitiei si se decide
+daca se pune in stanga sau in dreapta acestuia. Pt Mkdir este folosit acelasi
+rationament.
+    Pentru comanda ls, dorind afisare crescatoare lexico-grafica, se foloseste
+parcurgerea SRD.
+    Pentru delete, se cauta directorul dat. Daca este gasit, se marcheaza
+semaforul "ok". Pentru stergerea propriu-zisa, sunt urmatoarele cazuri:
+daca directorul e frunza, se elibereaza memoria folosita pt el. Daca are doar un
+fiu, se retine intr- o variabila auxiliara, se muta fiul in locul sau si se
+elibereaza memoria pe variabila auxiliara. Daca are mai multi fii, se afla
+minimul din subarborele drept, se pune numele acestuia in celula in care se
+doreste stergerea si se reapeleaza functia de delete pt subarborele drept, cu
+numele cu care a fost inlocuit file ul initial pentru a se elimina dublura.
+Analog pt rmdir.
+    Pentru cd se ia separat cazul cd .., unde, daca exista, actualizeaza direc.
+curent la parintele sau. Altfel, intr- un while cauta numele dat in arbore prin
+compararea numelui si se returneaza directorul.
+    La pwd se duce recursiv din parinte in parinte pana la root si afiseaza
+traseul.
+    Pentru find se disting cazurile "file" si "directory", cauta numele in
+arborele dat, iar daca nu a fost gasit, se apeleaza recursiv functia pt
+directoarele directorului, pentru stanga si dreapta sa.
+    Eliberarea memoriei se face recursiv, eliminand de la nivelul frunzelor
+pana la radacina.
+    Pe local am obtinut 135/135, 16/20
